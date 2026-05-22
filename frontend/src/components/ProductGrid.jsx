@@ -333,7 +333,7 @@ function ProductCard({ product }) {
             <h3 className="font-playfair text-xl leading-snug text-[#2D2B2A] group-hover:text-[#D56F4C] transition-colors duration-400">
               {product?.title}
             </h3>
-            <p className="font-raleway text-[13px] font-black text-[#D56F4C] tracking-wide">300 - 699 RS</p>
+            <p className="font-raleway text-[13px] font-black text-[#D56F4C] tracking-wide">₹299 – ₹799</p>
           </div>
           <p className="line-clamp-2 min-h-[34px] font-raleway text-xs leading-relaxed text-[#2D2B2A]/50">
             {product?.subtitle}
@@ -387,13 +387,13 @@ function ProductGrid() {
           </div>
 
           <div className="space-y-4">
-            <h2 className="font-playfair text-4xl leading-tight md:text-6xl">Our Curated Collections</h2>
-            <p className="mx-auto max-w-2xl font-raleway text-sm leading-8 text-[#2D2B2A]/62 md:text-base">
+            <h2 className="font-playfair text-3xl leading-tight md:text-6xl">Our Curated Collections</h2>
+            <p className="mx-auto max-w-2xl font-raleway text-xs leading-relaxed text-[#2D2B2A]/62 md:text-base">
               Explore 17 refined essentials across kitchen innovation, food storage, hydration, and smart home living. Each piece is arranged in a calm, premium browsing experience aligned with the Nandini Collections aesthetic.
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-3" aria-label="Category filter navigation" role="tablist">
+          <div className="flex flex-wrap items-center justify-center gap-2 md:gap-3" aria-label="Category filter navigation" role="tablist">
             {FILTERS.map((filter) => {
               const isActive = activeFilter === filter?.key;
               return (
@@ -403,7 +403,7 @@ function ProductGrid() {
                   role="tab"
                   aria-selected={isActive}
                   onClick={() => setActiveFilter(filter?.key)}
-                  className={`rounded-none border px-6 py-2.5 font-raleway text-[10px] uppercase tracking-widest transition-all duration-400 ${
+                  className={`rounded-none border px-4 md:px-6 py-2 md:py-2.5 font-raleway text-[9px] md:text-[10px] uppercase tracking-widest transition-all duration-400 ${
                     isActive
                       ? 'border-[#2D2B2A] bg-[#2D2B2A] text-white shadow-lg shadow-black/5'
                       : 'border-[#2D2B2A]/10 bg-white text-[#2D2B2A]/60 hover:border-[#2D2B2A]/30 hover:text-[#2D2B2A]'
