@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/ImagineboIcon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>imagine.bo App</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="module" src="/src/main.jsx"></script>
+    <script>
+      (function () {
+        if (window.__IMAGINE_BRIDGE__) return;
+        window.__IMAGINE_BRIDGE__ = true;
+
+        let idCounter = 0;
+
+        const allowedTags = [
+          "p",
+          "span",
+          "h1",
+          "h2",
+          "h3",
+          "h4",
+          "h5",
+          "h6",
+          "button",
+          "a",
+          "img",
+        ];
+
+        function getNodeById(nodeId) {
+          if (typeof nodeId !== "string" || !/^n_\d+$/.test(nodeId))
+            return null;
+          return document.querySelector('[data-node-id="' + nodeId + '"]');
+        }
+
+        function assignNodeIds() {
+          const walker = document.createTreeWalker(
+            document.body,
+            NodeFilter.SHOW_ELEMENT,
+          );
+          let node;
+
+          while ((node = walker.nextNode())) {
+            const tag = node.tagName?.toLowerCase();
+            if (!allowedTags.includes(tag)) continue;
+
+            if (!node.hasAttribute("data-node-id")) {
+              node.setAttribute("data-node-id", "n_" + ++idCounter);
+            }
+          }
+        }
+
+        const observer = new MutationObserver(function (mutations) {
+          mutations.forEach(function (m) {
+            m.addedNodes.forEach(function (node) {
+              if (node.nodeType !== 1) return;
+
+              const tag = node.tagName?.toLowerCase();
+              if (
+                allowedTags.includes(tag) &&
+                !node.hasAttribute("data-node-id")
+              ) {
+                node.setAttribute("data-node-id", "n_" + ++idCounter);
+              }
+
+              node
+                .querySelectorAll(allowedTags.join(","))
+                .forEach(function (child) {
+                  if (!child.hasAttribute("data-node-id")) {
+                    child.setAttribute("data-node-id", "n_" + ++idCounter);
+                  }
+                });
+            });
+          });
+        });
+
+        function init() {
+          assignNodeIds();
+          observer.observe(document.body, { childList: true, subtree: true });
+        }
+
+        if (document.body) {
+          init();
+        } else {
+          document.addEventListener("DOMContentLoaded", init);
+        }
+
+        document.addEventListener(
+          "click",
+          function (e) {
+            let el = e.target;
+
+            if (!el || el.nodeType !== 1) return;
+            if (el.closest("#watermark")) return;
+
+            while (el && el !== document.body) {
+              const tag = el.tagName?.toLowerCase();
+              if (allowedTags.includes(tag)) break;
+              el = el.parentElement;
+            }
+
+            if (!el || el === document.body) return;
+
+            const tag = el.tagName.toLowerCase();
+
+            if (!el.hasAttribute("data-node-id")) {
+              el.setAttribute("data-node-id", "n_" + ++idCounter);
+            }
+
+            const text = (el.innerText || "").trim();
+
+            console.log("CLICK TAG:", tag);
+
+            window.parent.postMessage(
+              {
+                type: "NODE_CLICK",
+                nodeId: el.getAttribute("data-node-id"),
+                tag,
+                text,
+                src:
+                  tag === "img"
+                    ? el.getAttribute("src") || el.src || ""
+                    : undefined,
+              },
+              "*",
+            );
+          },
+          true,
+        );
+
+        function applyUpdate(el, updates) {
+          if (!el || !updates) return;
+
+          if (typeof updates.text === "string") {
+            if (el.children.length === 0) {
+              el.textContent = updates.text;
+            } else {
+              const textNode = Array.from(el.childNodes).find(
+                (n) => n.nodeType === Node.TEXT_NODE && n.textContent.trim(),
+              );
+              if (textNode) {
+                textNode.textContent = updates.text;
+              }
+            }
+          }
+
+          if (
+            typeof updates.src === "string" &&
+            el.tagName.toLowerCase() === "img"
+          ) {
+            el.src = updates.src;
+          }
+
+          if (updates.attributes && typeof updates.attributes === "object") {
+            Object.keys(updates.attributes).forEach(function (key) {
+              const val = updates.attributes[key];
+              if (val === null || val === undefined) {
+                el.removeAttribute(key);
+              } else {
+                el.setAttribute(key, String(val));
+              }
+            });
+          }
+
+          if (updates.styles && typeof updates.styles === "object") {
+            Object.keys(updates.styles).forEach(function (key) {
+              el.style[key] = updates.styles[key];
+            });
+          }
+        }
+
+        window.addEventListener("message", function (event) {
+          if (event.source !== window.parent) return;
+
+          const data = event.data;
+
+          if (data?.type === "UPDATE_NODE") {
+            const el = getNodeById(data.nodeId);
+            if (el) applyUpdate(el, data.updates);
+          }
+
+          if (data?.type === "BATCH_UPDATE" && Array.isArray(data.changes)) {
+            data.changes.forEach(function (change) {
+              const el = getNodeById(change.nodeId);
+              if (el) applyUpdate(el, change.updates);
+            });
+          }
+
+          if (data?.type === "HIGHLIGHT_NODE") {
+            const el = getNodeById(data.nodeId);
+            if (el) el.style.outline = "2px solid #4f46e5";
+          }
+
+          if (data?.type === "CLEAR_HIGHLIGHT") {
+            document.querySelectorAll("[data-node-id]").forEach(function (el) {
+              el.style.outline = "";
+            });
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>

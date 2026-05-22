@@ -1,0 +1,615 @@
+{
+  "project_metadata": {
+    "project_name": "nc-kitchenware-factory",
+    "project_category": "Digital Catalog / E-Commerce Showcase",
+    "description": "NC Nandini Collections: Premium digital catalog for kitchenware in Namdevwada, Nizamabad. Pure white, gold-accent branding, mobile-responsive, WhatsApp inquiry-first. Features hero landing, modern product grid, advanced admin dashboard, and direct local contact routes.",
+    "core_purpose": "Showcase premium kitchenware in visually stunning, WhatsApp-driven digital catalog for instant conversion \u0026 local branding.",
+    "target_audience": "Kitchenware shoppers in Namdevwada/Nizamabad, local luxury-brand consumers, and admin staff",
+    "key_features": [
+      "Visually premium, brand-aligned digital catalog",
+      "100% WhatsApp-based inquiry and conversion flow",
+      "Mobile-optimized product grid (2 col) and responsive design",
+      "Admin dashboard for full product/category management",
+      "No cart or checkout, direct sales",
+      "Protected admin login (email/password)",
+      "SVG gold monogram and luxury typography",
+      "Dark gold-accented footer with social and contact"
+    ]
+  },
+  "frontend": {
+    "pages": [
+      {
+        "page_name": "Home",
+        "route": "/",
+        "show_in_nav": true,
+        "nav_order": 1,
+        "purpose": "Landing and conversion for inquiries and brand identity.",
+        "description": "Showcases brand via hero, featured products, short about, full contact. Responsive sections, gold accents, modern ultra-minimal layout with generous whitespace and strong visual rhythm. Mobile: hero contracts, featured product cards stack, full-width contact section.",
+        "sections": [
+          "Header",
+          "HeroBrandIntro",
+          "FeaturedProductsGrid",
+          "AboutSection",
+          "ContactSection",
+          "Footer"
+        ],
+        "content_notes": "Hero monogram 'Nandini', hero right-aligned over gold fade background image; featured products below. About and Contact are fully sectioned. Footer visible. WhatsApp and location identities repeated throughout. Header nav always visible, sticky at top.",
+        "data_needs": [
+          "/api/products"
+        ],
+        "is_protected": false
+      },
+      {
+        "page_name": "Catalog",
+        "route": "/catalog",
+        "show_in_nav": true,
+        "nav_order": 2,
+        "purpose": "Complete branded kitchenware product discovery.",
+        "description": "Mobile-first, infinite scroll product grid (2 cols mobile, 3-4 desktop). Each card: photo, product name, price range, gold button to WhatsApp inquiry. Category filter if \u003e1 category.",
+        "sections": [
+          "Header",
+          "ProductGrid",
+          "Footer"
+        ],
+        "content_notes": "Catalog grid 2-col mobile, 4-col desktop, soft shadow cards. Filters stick to top of grid if \u003e1 category. Each product grid card links to Product Detail.",
+        "data_needs": [
+          "/api/products",
+          "/api/categories"
+        ],
+        "is_protected": false
+      },
+      {
+        "page_name": "ProductDetail",
+        "route": "/product/:id",
+        "show_in_nav": false,
+        "nav_order": 3,
+        "purpose": "Display product details and convert via WhatsApp inquiry.",
+        "description": "Detailed product view, 2-col layout on desktop. Sticky WhatsApp inquire button. All details above the fold on mobile; Framer animation on load.",
+        "sections": [
+          "Header",
+          "ProductDetailSection",
+          "Footer"
+        ],
+        "content_notes": "Deep-link to individual product by ID. Large layout; WhatsApp button sticky on mobile. Image centered, name heading, description, price, and back link.",
+        "data_needs": [
+          "/api/products/:id",
+          "/api/categories"
+        ],
+        "is_protected": false
+      },
+      {
+        "page_name": "About",
+        "route": "/about",
+        "show_in_nav": true,
+        "nav_order": 4,
+        "purpose": "Brand education, trust, tech transparency.",
+        "description": "Tells the NC Nandini Collections story, location, and powers. Feature-rich about section with visuals. Responsive and gold-accented.",
+        "sections": [
+          "Header",
+          "AboutBrandSection",
+          "AboutTechStackSection",
+          "Footer"
+        ],
+        "content_notes": "Full brand story, illustrated kitchenware background, location map, tech stack card. Footer and header consistent with other pages.",
+        "data_needs": [],
+        "is_protected": false
+      },
+      {
+        "page_name": "AdminDashboard",
+        "route": "/admin",
+        "show_in_nav": false,
+        "nav_order": 5,
+        "purpose": "Full CRUD for catalog; manage products and categories.",
+        "description": "Admin-only dashboard to manage catalog: Tabbed view for products and categories. Product CRUD table, modals for form-edit, all styled to match premium gold-accent brand.",
+        "sections": [
+          "Header",
+          "AdminProductListAdmin",
+          "AdminProductForm",
+          "AdminCategoryList",
+          "AdminCategoryForm",
+          "Footer"
+        ],
+        "content_notes": "Admin login form gated before dashboard. After login, isAdmin context gives access to dashboard UI. Product list, add/edit/delete as modal forms. Dashboard visible only to admin.",
+        "data_needs": [
+          "/api/products",
+          "/api/categories"
+        ],
+        "is_protected": true
+      },
+      {
+        "page_name": "Login",
+        "route": "/login",
+        "show_in_nav": false,
+        "nav_order": 6,
+        "purpose": "Authenticate admin for access to dashboard.",
+        "description": "Admin-only login. Gold-accented branded login form, with error banners on failure, no signup link.",
+        "sections": [
+          "AdminAuthForm"
+        ],
+        "content_notes": "Admin login screen (not signup). Email: imaginebo81@gmail.com, pass: 1234567890. After success, redirect to /admin.",
+        "data_needs": [],
+        "is_protected": false
+      }
+    ],
+    "navigation": {
+      "type": "header",
+      "position": "top",
+      "style": "minimalist sticky gold-accent horizontal nav",
+      "has_logo": true,
+      "has_search": false,
+      "extra_items": [
+        "login_button",
+        "brand_logo",
+        "social_links"
+      ],
+      "links": [
+        {
+          "label": "Home",
+          "route": "/"
+        },
+        {
+          "label": "Catalog",
+          "route": "/catalog"
+        },
+        {
+          "label": "About",
+          "route": "/about"
+        },
+        {
+          "label": "Contact",
+          "route": "/#contact"
+        },
+        {
+          "label": "Login",
+          "route": "/login"
+        }
+      ]
+    },
+    "theme": {
+      "design_dna": "Ultra-modern, premium minimalist, pure white background (#ffffff), gold accent (#D4AF37), dark footer (#1a1a1a). Headings: Cinzel (all-caps) and Playfair Display. Body: Raleway. Soft gold drop-shadows. Cards and modals have 16px radius, gold underlines and accents. Large whitespace, visually light, mobile-first responsive with 2-col product grid on small screens. Focused on premium feel and direct conversion via WhatsApp CTA.",
+      "color_scheme": "pure-white with gold accent, dark footer with gold text",
+      "primary_color": "#ffffff",
+      "secondary_color": "#D4AF37",
+      "accent_color": "#D4AF37",
+      "font_family": "Cinzel, Playfair Display, Raleway, fallback: Arial",
+      "font_type": "Headings: Cinzel/Playfair; Body: Raleway",
+      "border_radius": "16px (cards, form elements, CTAs)",
+      "shadow_style": "0 2px 16px 0 rgba(212,175,55,0.08), product cards 0 8px 24px 0 rgba(0,0,0,0.06)",
+      "animation_style": "Framer Motion fade/scale, fast on gold CTAs",
+      "interaction_style": "Animated gold accent on hover/tap, rapid feedback on CTAs, sticky nav, modal slide, subtle shadows"
+    },
+    "components": [
+      {
+        "component_name": "Header",
+        "type": "section",
+        "description": "Sticky top navigation bar with a metallic gold SVG monogram logo (NC) and 'Nandini Collections' set in Playfair Display. Flexbox layout, white background, gold underline on active link, spacing-x-8. Minimized logo on mobile. Navigation links: Home, Catalog, About, Contact, Login. Login button styled gold, opens modal or navigates to /login. Hero uses short 'Nandini' version but this header always uses 'NC Nandini Collections' full. Responsive typography. When logged in (admin), Login is replaced by avatar and Admin (Dashboard) link.",
+        "used_on": [
+          "Home",
+          "Catalog",
+          "ProductDetail",
+          "About",
+          "AdminDashboard"
+        ],
+        "purpose": "Primary navigation and brand identity across the site.",
+        "props": [
+          "isAdmin",
+          "onLoginClick",
+          "userAvatarUrl"
+        ]
+      },
+      {
+        "component_name": "HeroBrandIntro",
+        "type": "section",
+        "description": "Full-bleed white hero with left-side high-res background image (50% width, left fade via gradient mask). Right center: Overlaid 'Nandini' in giant Playfair Display (gold gradient). Subheading: 'Premium Kitchenware | Namdevwada, Nizamabad'. Gold accent underlines. Padding-y-24, center on mobile. Large gold 'Inquire on WhatsApp' pill button (Framer Motion tap pulse) links to wa.me/918008890044.",
+        "used_on": [
+          "Home"
+        ],
+        "purpose": "Immediate brand impact and conversion CTA.",
+        "props": []
+      },
+      {
+        "component_name": "FeaturedProductsGrid",
+        "type": "section",
+        "description": "Grid of 3 featured products; each card has soft drop shadow, gold border, image, product name (Cinzel), price range (Raleway, medium), and 'Inquire on WhatsApp' pill gold button (Framer Motion hover scale). On mobile, 1 per row. Smooth fade-in animation.",
+        "used_on": [
+          "Home"
+        ],
+        "purpose": "Highlight top products for first impression.",
+        "props": [
+          "products"
+        ]
+      },
+      {
+        "component_name": "AboutSection",
+        "type": "section",
+        "description": "Block-section with two-column layout (text/image, stacks on mobile). Brand story with gold drop cap, playful paragraph typography, and list of values. Adjacent: Namdevwada map pin icon + location details, and small illustrated utensils backdrop. Separate from About page (shorter).",
+        "used_on": [
+          "Home"
+        ],
+        "purpose": "Show credibility and brand background briefly.",
+        "props": []
+      },
+      {
+        "component_name": "ContactSection",
+        "type": "section",
+        "description": "Full-width white background, gold heading and border-top. Large type location: 'Namdevwada, Nizamabad, Telangana'. Raleway body: 'Phone: 8008890044', WhatsApp icon + link, and bolded line for inquiries. Responsive flex on desktop, stacks on mobile. NO card effect.",
+        "used_on": [
+          "Home"
+        ],
+        "purpose": "Contact and inquiry details, always visible.",
+        "props": []
+      },
+      {
+        "component_name": "ProductGrid",
+        "type": "section",
+        "description": "Main product catalog: Responsive grid (Tailwind cols-2 on mobile, cols-3/4 on desktop), 24px gap, each card with image (aspect-square), product name (Cinzel, bold, gold underline on hover), price range, and gold 'Inquire on WhatsApp' button. Gold badge for category. Filter bar above (optional, can filter by category). Uses Framer Motion for staggered fade-in. Infinite scroll if \u003e20 products.",
+        "used_on": [
+          "Catalog"
+        ],
+        "purpose": "Display all kitchenware products for browsing.",
+        "props": [
+          "products",
+          "categories",
+          "onCategoryChange"
+        ]
+      },
+      {
+        "component_name": "ProductDetailSection",
+        "type": "section",
+        "description": "Layout: 2-column desktop (image left, info right), stacked on mobile. Large product image, Cinzel bold name, gold horizontal rule, description (Raleway, size-lg), category badge, price range. WhatsApp gold button (wa.me/918008890044) with product name in prefilled message. Sticky inquire button on mobile. Soft drop shadow around content card.",
+        "used_on": [
+          "ProductDetail"
+        ],
+        "purpose": "Immersive detailed product view and direct inquiry.",
+        "props": [
+          "product"
+        ]
+      },
+      {
+        "component_name": "AdminProductListAdmin",
+        "type": "section",
+        "description": "Admin table: all products listed with name, category, price, edit/delete icons (gold on hover). Search bar (Raleway), add button (gold, opens AdminProductForm modal). Sticky table head, zebra rows, section shadow and rounded-md. Actions animate via Framer Motion.",
+        "used_on": [
+          "AdminDashboard"
+        ],
+        "purpose": "Product management UI for admin.",
+        "props": [
+          "products",
+          "onEdit",
+          "onDelete",
+          "onAdd"
+        ]
+      },
+      {
+        "component_name": "AdminProductForm",
+        "type": "section",
+        "description": "Modal form for adding/editing products; fields: name, category dropdown, price range, description (multi-line), image upload (preview via dropzone). Gold buttons for save/cancel. Inputs styled with underlined gold accent, Playfair headers. Animates in/out with Framer Motion.",
+        "used_on": [
+          "AdminDashboard"
+        ],
+        "purpose": "CRUD product creation and editing in admin area.",
+        "props": [
+          "product",
+          "categories",
+          "onSubmit",
+          "onCancel"
+        ]
+      },
+      {
+        "component_name": "AdminCategoryList",
+        "type": "section",
+        "description": "Compact list of categories; add, edit, delete category actions (tiny gold icons), input inline edit. Styled as a minimalist shadow card, vertical scroll if \u003e8 items. Used inside admin dashboard sidebar panel.",
+        "used_on": [
+          "AdminDashboard"
+        ],
+        "purpose": "Category CRUD admin interface.",
+        "props": [
+          "categories",
+          "onEdit",
+          "onDelete",
+          "onAdd"
+        ]
+      },
+      {
+        "component_name": "AdminCategoryForm",
+        "type": "section",
+        "description": "Modal: add/edit category form. Simple one field ('name'), gold accent button, lightweight modal backdrop. Animates in and out.",
+        "used_on": [
+          "AdminDashboard"
+        ],
+        "purpose": "Category CRUD for admin.",
+        "props": [
+          "category",
+          "onSubmit",
+          "onCancel"
+        ]
+      },
+      {
+        "component_name": "AdminAuthForm",
+        "type": "section",
+        "description": "Login form (centered box, shadow, border-gold, Playfair and Raleway mix): email and password, gold pill login button, error message bar (red on error), password show/hide. Only for admin (no signup). Email: imaginebo81@gmail.com, password: 1234567890.",
+        "used_on": [
+          "Login"
+        ],
+        "purpose": "Admin authentication UI.",
+        "props": [
+          "onSubmit",
+          "error"
+        ]
+      },
+      {
+        "component_name": "Footer",
+        "type": "section",
+        "description": "Full-width dark background (#1a1a1a) with gold (#D4AF37) text/icons. Three columns: 1. Logo (SVG monogram) + 'NC Nandini Collections' in Playfair; 2. Quick links (Home, Catalog, About, Contact); 3. Contact info (Namdevwada, Nizamabad, Telangana, phone and WhatsApp with icons, Instagram/YT/WhatsApp gold icons). Extra bottom bar with copyright.",
+        "used_on": [
+          "Home",
+          "Catalog",
+          "ProductDetail",
+          "About",
+          "AdminDashboard"
+        ],
+        "purpose": "Site-wide navigation and contact info; reinforces premium identity.",
+        "props": []
+      },
+      {
+        "component_name": "AboutBrandSection",
+        "type": "section",
+        "description": "Main about page section: Full-bleed, Playfair headline, paragraphs with gold dropcap, illustrated kitchenware background, list of heritage/quality values, interactive location map pin, 'Our Origin' gold panel with Namdevwada/Nizamabad details.",
+        "used_on": [
+          "About"
+        ],
+        "purpose": "Full brand story and localisation.",
+        "props": []
+      },
+      {
+        "component_name": "AboutTechStackSection",
+        "type": "section",
+        "description": "Minimalist card with gold icon headers: 'What powers Nandini?'. Lists React, Tailwind, Framer Motion, Go, PostgreSQL. Pill tech badges, soft shadow.",
+        "used_on": [
+          "About"
+        ],
+        "purpose": "Tech stack display for About page.",
+        "props": []
+      }
+    ],
+    "layout": {
+      "has_header": true,
+      "has_footer": true,
+      "has_sidebar": false,
+      "max_width": "1280px",
+      "spacing": "section-y-16 px-4 md:px-8",
+      "footer_links": [
+        {
+          "label": "Home",
+          "route": "/"
+        },
+        {
+          "label": "Catalog",
+          "route": "/catalog"
+        },
+        {
+          "label": "About",
+          "route": "/about"
+        },
+        {
+          "label": "Contact",
+          "route": "/#contact"
+        }
+      ]
+    }
+  },
+  "backend": {
+    "requires_backend": true,
+    "apis": [
+      {
+        "endpoint": "/api/products",
+        "method": "GET",
+        "purpose": "Fetch all products for the catalog grid and featured products.",
+        "request_body": "N/A",
+        "response": "[{\"id\":1,\"name\":\"Premium Cookware Set\",\"category_id\":2,\"price_range\":\"₹2,000-₹5,000\",\"description\":\"Lorem ipsum...\",\"image_url\":\"/product-images/cookware1.jpg\"},...]",
+        "auth": true,
+        "used_by": [
+          "Catalog",
+          "ProductDetail",
+          "FeaturedProductsGrid"
+        ]
+      },
+      {
+        "endpoint": "/api/products/:id",
+        "method": "GET",
+        "purpose": "Fetch a single product's detailed view.",
+        "request_body": "N/A",
+        "response": "{\"id\":1,\"name\":\"Premium Cookware Set\",\"category_id\":2,\"price_range\":\"₹2,000-₹5,000\",\"description\":\"Lorem ipsum...\",\"image_url\":\"/product-images/cookware1.jpg\"}",
+        "auth": true,
+        "used_by": [
+          "ProductDetail"
+        ]
+      },
+      {
+        "endpoint": "/api/categories",
+        "method": "GET",
+        "purpose": "Retrieve all product categories for catalog filtering and product edit/add forms.",
+        "request_body": "N/A",
+        "response": "[{\"id\":1,\"name\":\"Cookware\"},...]",
+        "auth": true,
+        "used_by": [
+          "Catalog",
+          "AdminProductForm"
+        ]
+      },
+      {
+        "endpoint": "/api/products",
+        "method": "POST",
+        "purpose": "Create a new product (admin only).",
+        "request_body": "{\"name\":\"Non-stick Pan\",\"category_id\":1,\"price_range\":\"₹600-₹1500\",\"description\":\"...\",\"image_url\":\"/product-images/pan.jpg\"}",
+        "response": "{\"id\":7, ...}",
+        "auth": true,
+        "used_by": [
+          "AdminProductForm"
+        ]
+      },
+      {
+        "endpoint": "/api/products/:id",
+        "method": "PUT",
+        "purpose": "Edit product details (admin only).",
+        "request_body": "{\"name\":\"Non-stick Pan (Updated)\",\"category_id\":1,\"price_range\":\"₹800-₹1800\",\"description\":\"...\",\"image_url\":\"/product-images/pan.jpg\"}",
+        "response": "{\"success\":true,\"product_id\":7}",
+        "auth": true,
+        "used_by": [
+          "AdminProductForm"
+        ]
+      },
+      {
+        "endpoint": "/api/products/:id",
+        "method": "DELETE",
+        "purpose": "Delete a product (admin only).",
+        "request_body": "N/A",
+        "response": "{\"success\":true,\"deleted_id\":7}",
+        "auth": true,
+        "used_by": [
+          "AdminProductListAdmin"
+        ]
+      },
+      {
+        "endpoint": "/api/categories",
+        "method": "POST",
+        "purpose": "Add a new category (admin only).",
+        "request_body": "{\"name\":\"Cutlery Sets\"}",
+        "response": "{\"id\":9,\"name\":\"Cutlery Sets\"}",
+        "auth": true,
+        "used_by": [
+          "AdminCategoryForm"
+        ]
+      },
+      {
+        "endpoint": "/api/categories/:id",
+        "method": "PUT",
+        "purpose": "Edit a category (admin only).",
+        "request_body": "{\"name\":\"Serving Sets\"}",
+        "response": "{\"id\":2,\"name\":\"Serving Sets\"}",
+        "auth": true,
+        "used_by": [
+          "AdminCategoryForm"
+        ]
+      },
+      {
+        "endpoint": "/api/categories/:id",
+        "method": "DELETE",
+        "purpose": "Delete a category (admin only).",
+        "request_body": "N/A",
+        "response": "{\"success\":true,\"deleted_id\":4}",
+        "auth": true,
+        "used_by": [
+          "AdminCategoryList"
+        ]
+      }
+    ],
+    "database": {
+      "models": [
+        {
+          "model_name": "Product",
+          "fields": [
+            {
+              "name": "id",
+              "type": "uint"
+            },
+            {
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "name": "category_id",
+              "type": "uint"
+            },
+            {
+              "name": "price_range",
+              "type": "string"
+            },
+            {
+              "name": "description",
+              "type": "string"
+            },
+            {
+              "name": "image_url",
+              "type": "string"
+            }
+          ],
+          "relationships": [
+            "Category (belongs_to)"
+          ],
+          "indexes": [
+            "category_id"
+          ]
+        },
+        {
+          "model_name": "Category",
+          "fields": [
+            {
+              "name": "id",
+              "type": "uint"
+            },
+            {
+              "name": "name",
+              "type": "string"
+            }
+          ],
+          "relationships": [
+            "Product (has_many)"
+          ],
+          "indexes": [
+            "name"
+          ]
+        }
+      ]
+    },
+    "authentication": {
+      "required": true,
+      "type": "custom_admin",
+      "providers": [
+        "email"
+      ],
+      "protected_apis": null
+    },
+    "external_apis": [],
+    "file_storage": {
+      "required": true,
+      "types": [
+        ".jpg",
+        ".jpeg",
+        ".png",
+        ".webp"
+      ],
+      "max_size": "5MB"
+    }
+  },
+  "technical_specs": {
+    "frontend": {
+      "framework": "React",
+      "routing": "Router DOM v6+",
+      "styling": "Tailwind CSS v4 with custom gold theme",
+      "state_management": "React + Context (for admin auth state)",
+      "animation": "Framer Motion for page/cta transitions",
+      "dependencies": [
+        "React",
+        "Router DOM",
+        "Tailwind v4",
+        "Framer Motion",
+        "react-icons",
+        "classnames"
+      ]
+    },
+    "backend": {
+      "framework": "Go (Gin)",
+      "database": "PostgreSQL v16, products and categories. GORM ORM.",
+      "orm": "GORM",
+      "auth": "Email/password; admin only",
+      "dependencies": [
+        "Gin",
+        "GORM",
+        "PostgreSQL Driver",
+        "internal/auth",
+        "internal/apperror"
+      ]
+    }
+  }
+}
