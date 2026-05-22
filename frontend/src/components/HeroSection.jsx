@@ -93,7 +93,7 @@ export default function HeroSection({ cta_action }) {
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.97 }}
             >
-              Inquire Now
+              Chat on WhatsApp
               <ArrowRightIcon className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
             </motion.button>
           </motion.div>
