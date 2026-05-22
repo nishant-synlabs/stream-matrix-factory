@@ -172,11 +172,11 @@ export default function Footer() {
               <li className="flex items-center gap-3">
                 <MailIcon size={14} strokeWidth={1.5} className="text-[#D4AF37] shrink-0" />
                 <a
-                  href="mailto:nandinicollections@gmail.com"
+                  href="mailto:nandinicollections01@gmail.com"
                   data-imagine-id="footer-contact-email"
                   className="font-raleway text-sm text-white/45 hover:text-[#D4AF37] transition-colors duration-300 break-all"
                 >
-                  nandinicollections@gmail.com
+                  nandinicollections01@gmail.com
                 </a>
               </li>
             </ul>
