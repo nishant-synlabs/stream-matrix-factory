@@ -32,7 +32,7 @@ export default function ContactSection() {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {
-    navigator.clipboard?.writeText('nc.nandini.collections@gmail.com');
+    navigator.clipboard?.writeText('nandinicollections01@gmail.com');
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -125,10 +125,9 @@ export default function ContactSection() {
             <div>
               <h3 className="text-sm font-bold uppercase tracking-[0.15em] mb-2" style={{ color: '#23272c', opacity: 0.5 }}>Email Us</h3>
               <button onClick={handleCopy} className="text-lg font-medium text-left hover:opacity-70 transition-opacity" style={{ fontFamily: 'Raleway, sans-serif', color: '#23272c' }}>
-                {copied ? 'Copied to clipboard!' : 'nc.nandini.collections@gmail.com'}
+                {copied ? 'Copied to clipboard!' : 'nandinicollections01@gmail.com'}
               </button>
-            </div>
-          </div>
+            </div>          </div>
 
           {/* Hours */}
           <div className="flex items-start gap-6">
