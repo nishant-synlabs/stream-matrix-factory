@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import * as Icons from 'lucide-react';
 import { useAuth } from '../AuthContext';
@@ -12,9 +13,12 @@ const NAV_LINKS = [
 export default function Header({ isLoggedIn, onLoginClick }) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeRoute, setActiveRoute] = useState('/');
   const [avatarMenuOpen, setAvatarMenuOpen] = useState(false);
   const avatarRef = useRef(null);
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const activeRoute = location.pathname;
 
   const authContext = useAuth();
   const user = authContext?.user;
@@ -29,10 +33,6 @@ export default function Header({ isLoggedIn, onLoginClick }) {
   const LogOutIcon = Icons['LogOut'] || Icons['HelpCircle'];
   const ShieldIcon = Icons['ShieldCheck'] || Icons['HelpCircle'];
   const ChevronDownIcon = Icons['ChevronDown'] || Icons['HelpCircle'];
-
-  useEffect(() => {
-    setActiveRoute(window.location.pathname);
-  }, []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -54,16 +54,11 @@ export default function Header({ isLoggedIn, onLoginClick }) {
     e.preventDefault();
     setMobileOpen(false);
     setAvatarMenuOpen(false);
-    setActiveRoute(route);
-    if (route === '/') {
+    
+    if (location.pathname === route) {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
-      const el = document.getElementById(route.replace('/', ''));
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      } else {
-        window.location.href = route;
-      }
+      navigate(route);
     }
   };
 
