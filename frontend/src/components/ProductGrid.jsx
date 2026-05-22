@@ -3,6 +3,27 @@ import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import * as Icons from 'lucide-react';
 
+// Import Assets
+import kitchenImg1 from '../assets/kitchen.jpeg';
+import kitchenImg2 from '../assets/kitchen2.jpeg';
+import kitchenImg3 from '../assets/kitchen3.jpeg';
+import kitchenImg4 from '../assets/kitchen4.jpeg';
+import kitchenImg5 from '../assets/kitchen5.jpeg';
+import lunchImg1 from '../assets/lunch.jpeg';
+import lunchImg2 from '../assets/lunch2.jpeg';
+import lunchImg3 from '../assets/lunch3.jpeg';
+import lunchImg4 from '../assets/lunch4.jpeg';
+import bottleImg1 from '../assets/bottle.jpeg';
+import bottleImg2 from '../assets/bottle2.jpeg';
+import bottleImg3 from '../assets/bottle3.jpeg';
+import bottleImg4 from '../assets/bottle4.jpeg';
+import electricImg1 from '../assets/electric.jpeg';
+import electricImg2 from '../assets/electric2.jpeg';
+import fanImg from '../assets/fan.jpeg';
+import keychainImg from '../assets/keychain.jpeg';
+import shoeImg from '../assets/shoe1.jpeg';
+import paintingImg from '../assets/painting.jpeg';
+
 const WHATSAPP_NUMBER = '918008890044';
 
 const FILTERS = [
@@ -24,6 +45,7 @@ const PRODUCT_COLLECTIONS = [
         title: 'Gropa Infrared Cooktop / Cooker (3500W)',
         subtitle: 'Universal crystal glass top, 4 preset cooking modes, precision touch panel.',
         badge: 'Ready Stock / Limited Stock',
+        image: kitchenImg1,
         swatches: [],
       },
       {
@@ -31,6 +53,7 @@ const PRODUCT_COLLECTIONS = [
         title: "PDD Falcon 'Fine Chop' Vegetable Chopper",
         subtitle: 'Easy-press mechanism, odour-free stainless steel container.',
         badge: 'Coming Soon',
+        image: kitchenImg2,
         swatches: [
           { type: 'Size', value: 'Small: 700ml' },
           { type: 'Size', value: 'Big: 900ml' },
@@ -41,6 +64,7 @@ const PRODUCT_COLLECTIONS = [
         title: "Dubblin 'Swing' Stainless Steel Travel Mug",
         subtitle: 'Premium double-wall insulation for tea & coffee with travel strap.',
         badge: 'Ready Stock',
+        image: kitchenImg3,
         swatches: [
           { type: 'Color', value: 'Mint Green' },
           { type: 'Color', value: 'Off-White' },
@@ -61,6 +85,7 @@ const PRODUCT_COLLECTIONS = [
         title: "PDD Falcon 'Tuff' Double Wall Containers",
         subtitle: 'Food-grade 204 Cu stainless steel inner shell, stackable leakproof design.',
         badge: 'Coming Soon',
+        image: lunchImg1,
         swatches: [
           { type: 'Size', value: '350ml' },
           { type: 'Size', value: '525ml' },
@@ -71,6 +96,7 @@ const PRODUCT_COLLECTIONS = [
         title: 'Minimalist Stainless Steel Snacks Box',
         subtitle: '550ml capacity, 304 food-grade steel, clean matte cream lid lock.',
         badge: 'Coming Soon',
+        image: lunchImg2,
         swatches: [],
       },
       {
@@ -78,6 +104,7 @@ const PRODUCT_COLLECTIONS = [
         title: 'Signoraware Steel Lunch Box Big',
         subtitle: '700ml capacity, heavy-duty insulated round thermal lunch carrier.',
         badge: 'Ready Stock',
+        image: lunchImg3,
         swatches: [],
       },
       {
@@ -85,6 +112,7 @@ const PRODUCT_COLLECTIONS = [
         title: "PDD Falcon 'Lunch Mate' Box Set",
         subtitle: '100% leakproof rectangular multi-tier design. Includes 750ml + 180ml containers.',
         badge: 'Ready Stock',
+        image: lunchImg4,
         swatches: [],
       },
       {
@@ -92,6 +120,7 @@ const PRODUCT_COLLECTIONS = [
         title: 'Tedemei Pastel Kids Lunch Box',
         subtitle: 'Playful square modular trays, built-in spoon compartment, pastel accent seals.',
         badge: 'Ready Stock',
+        image: kitchenImg4,
         swatches: [],
       },
     ],
@@ -106,6 +135,7 @@ const PRODUCT_COLLECTIONS = [
         title: 'Brazik Mini Printed Art Flask',
         subtitle: '300ml vacuum insulated luxury bottle featuring premium peacock & butterfly floral prints.',
         badge: 'Coming Soon',
+        image: bottleImg1,
         swatches: [],
       },
       {
@@ -113,6 +143,7 @@ const PRODUCT_COLLECTIONS = [
         title: 'PDD Falcon Kids Sipper Straw Glass',
         subtitle: '450ml air-tight stainless steel tumblers with protective animal decals: Crocodile, Bear, Panda, Lion, Unicorn.',
         badge: 'Ready Stock',
+        image: bottleImg2,
         swatches: [],
       },
       {
@@ -120,6 +151,7 @@ const PRODUCT_COLLECTIONS = [
         title: 'Aesthetic Clear Spray Bottles',
         subtitle: '100ml compact misting containers with soft floral patterns for beauty and home care.',
         badge: 'Ready Stock',
+        image: bottleImg3,
         swatches: [],
       },
     ],
@@ -134,6 +166,7 @@ const PRODUCT_COLLECTIONS = [
         title: 'STC Deep Tissue Gun Massager 203',
         subtitle: 'Minimalist white high-speed percussion motor, long-lasting battery, 4 specialized attachment heads.',
         badge: 'Ready Stock',
+        image: electricImg1,
         swatches: [],
       },
       {
@@ -141,6 +174,7 @@ const PRODUCT_COLLECTIONS = [
         title: 'Relaxing Electric Scalp Massager',
         subtitle: 'Waterproof, 4 structural 360 degree deep-kneading massage heads, metallic blue ergonomics.',
         badge: 'Ready Stock',
+        image: electricImg2,
         swatches: [],
       },
       {
@@ -148,6 +182,7 @@ const PRODUCT_COLLECTIONS = [
         title: '5D Texture Geometric Bathroom Mats',
         subtitle: 'High-definition vibrant dimensional floral and stone patterns, non-slip quick-dry backing.',
         badge: 'Ready Stock',
+        image: paintingImg,
         swatches: [],
       },
       {
@@ -155,6 +190,7 @@ const PRODUCT_COLLECTIONS = [
         title: 'Desktop Mini USB Strawberry Fan',
         subtitle: 'Rechargeable travel cooling fan with integrated desktop dock stand.',
         badge: 'Ready Stock',
+        image: fanImg,
         swatches: [
           { type: 'Color', value: 'Green' },
           { type: 'Color', value: 'Pink' },
@@ -167,6 +203,7 @@ const PRODUCT_COLLECTIONS = [
         title: 'Brazik Quick Shoe Wipes',
         subtitle: 'Portable 80-wipe travel pack for instant cleaning on all leather and sneaker materials.',
         badge: 'Ready Stock',
+        image: shoeImg,
         swatches: [],
       },
       {
@@ -174,6 +211,7 @@ const PRODUCT_COLLECTIONS = [
         title: 'Mechanical Switch LED Keyboard Keychain',
         subtitle: 'RGB illuminated clicky fidget accessory with transparent custom keycaps.',
         badge: 'Ready Stock',
+        image: keychainImg,
         swatches: [],
       },
     ],
@@ -188,22 +226,20 @@ const allProducts = PRODUCT_COLLECTIONS.flatMap((collection) =>
   }))
 );
 
-function PlaceholderVisual({ title }) {
+function ProductVisual({ product }) {
   return (
-    <div className="relative flex h-full min-h-[260px] w-full items-center justify-center overflow-hidden bg-[#F6F0E8] px-6 py-10">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,#ffffff_0%,transparent_50%)] opacity-70" />
-      <div className="absolute left-6 top-6 h-14 w-14 rounded-full border border-[#D56F4C]/20" />
-      <div className="absolute bottom-6 right-6 h-20 w-20 rounded-full border border-[#2D2B2A]/8" />
-      <div className="absolute inset-x-8 bottom-8 h-px bg-gradient-to-r from-transparent via-[#D56F4C]/40 to-transparent" />
-      <div className="relative flex max-w-[220px] flex-col items-center gap-4 text-center">
-        <div className="flex gap-2">
-          <span className="h-2 w-2 rounded-full bg-[#D56F4C]" />
-          <span className="h-2 w-2 rounded-full bg-[#D56F4C]/50" />
-          <span className="h-2 w-2 rounded-full bg-[#D56F4C]/25" />
-        </div>
-        <p className="font-playfair text-2xl leading-tight text-[#2D2B2A]">{title}</p>
-        <p className="font-raleway text-[11px] uppercase tracking-[0.32em] text-[#2D2B2A]/45">Curated catalog preview</p>
-      </div>
+    <div className="relative aspect-[3/2] w-full overflow-hidden bg-[#FBFBFB] p-6">
+      {/* Subtle depth effect */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.8)_0%,transparent_100%)] opacity-40" />
+      
+      <img
+        src={product.image}
+        alt={product.title}
+        className="relative z-10 h-full w-full object-contain transition-transform duration-1000 ease-in-out group-hover:scale-105"
+      />
+      
+      {/* Elegant inner hairline */}
+      <div className="absolute inset-0 border-[0.5px] border-black/[0.04] pointer-events-none" />
     </div>
   );
 }
@@ -214,32 +250,34 @@ function VariantSwatches({ product }) {
 
   if (!swatches.length) {
     return (
-      <div className="flex min-h-14 flex-col gap-2">
-        <p className="font-raleway text-[11px] uppercase tracking-[0.22em] text-[#2D2B2A]/35">Selection</p>
-        <p className="font-raleway text-sm text-[#2D2B2A]/65">Standard Selection</p>
+      <div className="flex items-center gap-1.5">
+        <div className="h-0.5 w-0.5 rounded-full bg-[#D56F4C]/60" />
+        <p className="font-raleway text-[8px] uppercase tracking-widest text-[#2D2B2A]/40 font-bold">Standard Selection</p>
       </div>
     );
   }
 
   return (
-    <div className="flex flex-col gap-3">
-      <div className="flex items-center justify-between gap-3">
-        <p className="font-raleway text-[11px] uppercase tracking-[0.22em] text-[#2D2B2A]/35">Variant</p>
-        <p className="font-raleway text-xs text-[#D56F4C]">{activeVariant}</p>
+    <div className="flex flex-col gap-2.5">
+      <div className="flex items-center justify-between">
+        <p className="font-raleway text-[8px] uppercase tracking-widest text-[#2D2B2A]/30 font-black">Variant</p>
+        <span className="font-raleway text-[9px] font-bold text-[#D56F4C] tracking-wide">{activeVariant}</span>
       </div>
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-1.5">
         {swatches.map((swatch, index) => {
           const isActive = activeVariant === swatch?.value;
           return (
             <button
               key={`${swatch?.type}-${swatch?.value}-${index}`}
               type="button"
-              onClick={() => setActiveVariant(swatch?.value)}
-              aria-label={`${swatch?.type}: ${swatch?.value}`}
-              className={`rounded-full border px-3 py-1.5 font-raleway text-[11px] uppercase tracking-[0.16em] transition-all duration-200 ${
+              onClick={(e) => {
+                e.stopPropagation();
+                setActiveVariant(swatch?.value);
+              }}
+              className={`rounded-none border px-2.5 py-1.5 font-raleway text-[8px] uppercase tracking-wider font-black transition-all duration-300 ${
                 isActive
                   ? 'border-[#D56F4C] bg-[#D56F4C] text-white'
-                  : 'border-[#2D2B2A]/12 bg-white text-[#2D2B2A]/60 hover:border-[#D56F4C]/50 hover:text-[#D56F4C]'
+                  : 'border-[#2D2B2A]/10 bg-white text-[#2D2B2A]/50 hover:border-[#D56F4C]/40 hover:text-[#D56F4C]'
               }`}
             >
               {swatch?.value}
@@ -253,12 +291,13 @@ function VariantSwatches({ product }) {
 
 function ProductCard({ product }) {
   const navigate = useNavigate();
+  const MessageCircle = Icons['MessageCircle'] || Icons['MessageSquare'];
 
-  const badgeTone = product?.badge?.toLowerCase()?.includes('coming')
-    ? 'border-[#2D2B2A]/15 text-[#2D2B2A]/55 bg-white/80'
+  const badgeStyles = product?.badge?.toLowerCase()?.includes('coming')
+    ? 'bg-black/80 text-white border-white/10'
     : product?.badge?.toLowerCase()?.includes('limited')
-      ? 'border-[#D56F4C]/30 text-[#D56F4C] bg-[#fff7f3]'
-      : 'border-[#2D2B2A]/12 text-[#2D2B2A]/70 bg-white';
+      ? 'bg-[#D56F4C] text-white border-transparent'
+      : 'bg-white/95 text-[#2D2B2A] border-[#2D2B2A]/10 shadow-sm';
 
   const handleWhatsApp = (event) => {
     event?.stopPropagation();
@@ -271,47 +310,49 @@ function ProductCard({ product }) {
   return (
     <motion.article
       layout
-      whileHover={{ y: -6 }}
+      whileHover={{ y: -4 }}
       onClick={() => navigate(`/product/${product?.id}`)}
-      className="group flex h-full cursor-pointer flex-col overflow-hidden rounded-[28px] border border-[#2D2B2A]/8 bg-white shadow-[0_18px_60px_rgba(45,43,42,0.06)] transition-all duration-300"
+      className="group flex h-full cursor-pointer flex-col overflow-hidden rounded-xl border border-[#2D2B2A]/10 bg-white transition-all duration-500 hover:border-[#D56F4C]/30"
     >
-      <div className="overflow-hidden">
-        <motion.div whileHover={{ scale: 1.02 }} transition={{ duration: 0.3, ease: 'easeOut' }} className="h-full w-full">
-          <PlaceholderVisual title={product?.title} />
-        </motion.div>
-      </div>
-
-      <div className="flex flex-1 flex-col gap-5 p-6 md:p-7">
-        <div className="flex items-start justify-between gap-4">
-          <div className="space-y-3">
-            <p className="font-raleway text-[11px] uppercase tracking-[0.28em] text-[#D56F4C]">{product?.collectionTitle}</p>
-            <h3 className="font-playfair text-[1.55rem] leading-tight text-[#2D2B2A]">{product?.title}</h3>
-          </div>
-          <span className={`shrink-0 rounded-full border px-3 py-1.5 text-[10px] font-raleway uppercase tracking-[0.24em] ${badgeTone}`}>
+      <div className="relative overflow-hidden">
+        <ProductVisual product={product} />
+        <div className="absolute right-4 top-4 z-10">
+          <span className={`inline-block rounded-none border px-3 py-1.5 text-[7px] font-black uppercase tracking-[0.2em] ${badgeStyles}`}>
             {product?.badge}
           </span>
         </div>
+      </div>
 
-        <p className="font-raleway text-sm leading-7 text-[#2D2B2A]/68">{product?.subtitle}</p>
+      <div className="flex flex-1 flex-col gap-5 p-5 md:p-6">
+        <div className="space-y-2.5">
+          <div className="flex items-center gap-2">
+            <span className="h-[1px] w-4 bg-[#D56F4C]/60" />
+            <p className="font-raleway text-[8px] font-black uppercase tracking-widest text-[#D56F4C]">{product?.collectionTitle}</p>
+          </div>
+          <div className="flex flex-col gap-1.5">
+            <h3 className="font-playfair text-xl leading-snug text-[#2D2B2A] group-hover:text-[#D56F4C] transition-colors duration-400">
+              {product?.title}
+            </h3>
+            <p className="font-raleway text-[13px] font-black text-[#D56F4C] tracking-wide">300 - 699 RS</p>
+          </div>
+          <p className="line-clamp-2 min-h-[34px] font-raleway text-xs leading-relaxed text-[#2D2B2A]/50">
+            {product?.subtitle}
+          </p>
+        </div>
 
-        <VariantSwatches product={product} />
+        <div className="mt-auto flex flex-col gap-5">
+          <div className="h-[1px] w-full bg-[#2D2B2A]/5" />
+          
+          <VariantSwatches product={product} />
 
-        <div className="mt-auto flex items-center justify-between gap-4 border-t border-[#2D2B2A]/8 pt-5">
           <button
             type="button"
             onClick={handleWhatsApp}
-            aria-label={`Inquire about ${product?.title} on WhatsApp`}
-            className="inline-flex items-center gap-2 rounded-full bg-[#D56F4C] px-5 py-3 font-raleway text-[11px] uppercase tracking-[0.24em] text-white transition-all duration-300 hover:bg-[#c95f3e]"
+            className="group/btn relative flex w-full items-center justify-between overflow-hidden rounded-none border border-[#2D2B2A] bg-transparent px-6 py-3 font-raleway text-[10px] font-black uppercase tracking-widest text-[#2D2B2A] transition-all duration-400 hover:bg-[#2D2B2A] hover:text-white"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
-            </svg>
-            Inquire on WhatsApp
+            <span className="relative z-10">Chat on WhatsApp</span>
+            <MessageCircle size={16} strokeWidth={2} className="relative z-10 transition-transform duration-400 group-hover/btn:translate-x-1" />
           </button>
-
-          <span className="font-raleway text-[11px] uppercase tracking-[0.24em] text-[#2D2B2A]/35">
-            View Detail
-          </span>
         </div>
       </div>
     </motion.article>
@@ -362,10 +403,10 @@ function ProductGrid() {
                   role="tab"
                   aria-selected={isActive}
                   onClick={() => setActiveFilter(filter?.key)}
-                  className={`rounded-full border px-5 py-3 font-raleway text-[11px] uppercase tracking-[0.26em] transition-all duration-300 ${
+                  className={`rounded-none border px-6 py-2.5 font-raleway text-[10px] uppercase tracking-widest transition-all duration-400 ${
                     isActive
-                      ? 'border-[#D56F4C] bg-[#D56F4C] text-white shadow-[0_12px_32px_rgba(213,111,76,0.22)]'
-                      : 'border-[#2D2B2A]/10 bg-white text-[#2D2B2A]/62 hover:border-[#D56F4C]/35 hover:text-[#D56F4C]'
+                      ? 'border-[#2D2B2A] bg-[#2D2B2A] text-white shadow-lg shadow-black/5'
+                      : 'border-[#2D2B2A]/10 bg-white text-[#2D2B2A]/60 hover:border-[#2D2B2A]/30 hover:text-[#2D2B2A]'
                   }`}
                 >
                   {filter?.label}
@@ -374,7 +415,7 @@ function ProductGrid() {
             })}
           </div>
 
-          <p className="font-raleway text-[11px] uppercase tracking-[0.3em] text-[#2D2B2A]/34">
+          <p className="font-raleway text-[10px] uppercase tracking-widest text-[#2D2B2A]/30">
             Showing {visibleProducts.length} products across {visibleCollections.length} collection{visibleCollections.length > 1 ? 's' : ''}
           </p>
         </div>
@@ -382,25 +423,25 @@ function ProductGrid() {
         <AnimatePresence mode="wait">
           <motion.div
             key={activeFilter}
-            initial={{ opacity: 0, y: 18 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -12 }}
-            transition={{ duration: 0.35, ease: 'easeOut' }}
-            className="flex flex-col gap-16"
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.4, ease: 'easeOut' }}
+            className="flex flex-col gap-20"
           >
             {visibleCollections.map((collection) => {
               const collectionProducts = allProducts.filter((product) => product?.collectionKey === collection?.key);
               return (
-                <section key={collection?.key} className="flex flex-col gap-8">
-                  <div className="flex flex-col gap-4 border-b border-[#2D2B2A]/8 pb-6 md:flex-row md:items-end md:justify-between">
-                    <div className="space-y-3">
-                      <p className="font-raleway text-[11px] uppercase tracking-[0.32em] text-[#D56F4C]">Collection</p>
-                      <h3 className="font-playfair text-3xl leading-tight md:text-4xl">{collection?.title}</h3>
+                <section key={collection?.key} className="flex flex-col gap-10">
+                  <div className="flex flex-col gap-5 border-b-[0.5px] border-[#2D2B2A]/10 pb-4 md:flex-row md:items-end md:justify-between">
+                    <div className="space-y-2">
+                      <p className="font-raleway text-[10px] uppercase tracking-widest text-[#D56F4C]">Collection</p>
+                      <h3 className="font-playfair text-2xl leading-tight md:text-3xl">{collection?.title}</h3>
                     </div>
-                    <p className="max-w-2xl font-raleway text-sm leading-7 text-[#2D2B2A]/58 md:text-right">{collection?.description}</p>
+                    <p className="max-w-2xl font-raleway text-xs leading-relaxed text-[#2D2B2A]/50 md:text-right">{collection?.description}</p>
                   </div>
 
-                  <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+                  <div className="grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
                     {collectionProducts.map((product) => (
                       <ProductCard key={product?.id} product={product} />
                     ))}
