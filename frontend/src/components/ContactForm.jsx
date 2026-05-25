@@ -9,7 +9,7 @@ const MessageCircleIcon = Icons['MessageCircle'] || Icons['HelpCircle'];
 const PHONE_NUMBER = '8008890044';
 const WHATSAPP_LINK = `https://wa.me/918008890044`;
 const EMAIL = 'nandinicollections01@gmail.com';
-const ADDRESS = 'NC Nandini Collections, Industrial Estate, Sector 12, Hyderabad — 500 001, Telangana, India';
+const ADDRESS = 'Home no 6-13-31near Sri Sai Nilayam, Namdevwada, Telangana 503002';
 
 const containerVariants = {
   hidden: { opacity: 0, y: 32 },

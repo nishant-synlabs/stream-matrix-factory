@@ -151,7 +151,7 @@ export default function AboutSection() {
             <div className="space-y-5">
               <p className="font-raleway text-base md:text-lg text-white/60 leading-relaxed font-light">
                 <span className="float-left font-cinzel text-5xl leading-none text-[#D4AF37] mr-2 mt-1">N</span>
-                C Nandini Collections was founded with a singular vision: to bring premium kitchenware to every household without compromise. Nestled in the heart of Namdevwada, Nizamabad, our factory is where tradition meets modern design.
+                C Nandini Collections was founded with a singular vision: to bring premium kitchenware to every household without compromise. Nestled in the heart of Namdevwada, our factory is where tradition meets modern design.
               </p>
               <p className="font-raleway text-sm text-white/40 leading-relaxed font-light">
                 From the selection of raw materials to the final polish on every product, our team of skilled craftspeople ensures that each piece leaving our workshop reflects the excellence NC Nandini stands for.

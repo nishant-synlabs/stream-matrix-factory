@@ -74,7 +74,7 @@ export default function ContactSection() {
             className="text-lg md:text-xl max-w-xl mb-12 leading-relaxed"
             style={{ fontFamily: 'Raleway, sans-serif', color: '#23272c', opacity: 0.7 }}
           >
-            Visit our store in Namdevwada, Nizamabad, or reach out directly via WhatsApp. We are here to help you find the perfect premium kitchenware.
+            Visit our store in Home no 6-13-31near Sri Sai Nilayam, Namdevwada, Nizamabad, Telangana 503002, or reach out directly via WhatsApp. We are here to help you find the perfect premium kitchenware.
           </p>
           
           <motion.a

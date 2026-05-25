@@ -156,7 +156,7 @@ export default function Footer() {
                   data-imagine-id="footer-contact-address"
                   className="font-raleway text-sm text-white/45 leading-relaxed"
                 >
-                  Namdevwada, Nizamabad,<br />Telangana, India
+                  Home no 6-13-31near Sri Sai Nilayam, Namdevwada<br />Telangana 503002
                 </span>
               </li>
               <li className="flex items-center gap-3">

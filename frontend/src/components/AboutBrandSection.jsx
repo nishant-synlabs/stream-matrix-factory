@@ -279,7 +279,7 @@ export default function AboutBrandSection() {
             <p className="font-raleway text-[#444] text-base leading-relaxed mb-5">
               <span className="float-left text-6xl leading-none font-playfair text-[#D4AF37] mr-2 mt-1">N</span>
               <span data-imagine-id="about-brand-story-para1">
-                C Nandini Collections was founded with a singular vision: to bring premium kitchenware to every household without compromise. Nestled in the heart of Namdevwada, Nizamabad, our factory is where tradition meets modern design.
+                C Nandini Collections was founded with a singular vision: to bring premium kitchenware to every household without compromise. Nestled in the heart of Namdevwada, our factory is where tradition meets modern design.
               </span>
             </p>
             <p
